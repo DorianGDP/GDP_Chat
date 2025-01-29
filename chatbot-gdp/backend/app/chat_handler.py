@@ -8,7 +8,7 @@ import faiss
 import numpy as np
 from config import config
 from .models import Lead, DatabaseHandler
-from .utils import DataValidator
+from .untils import DataValidator
 
 class WealthChatbot:
     def __init__(self, openai_client):
