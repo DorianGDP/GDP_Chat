@@ -1,7 +1,7 @@
 // Configuration de l'API
 const API_CONFIG = {
     // URL de base de l'API
-    BASE_URL: 'https://chatbot-gdp.onrender.com/api',
+    BASE_URL: 'https://gdp-chat.onrender.com/api',
     
     // Points d'entrée de l'API
     ENDPOINTS: {
@@ -18,7 +18,6 @@ const API_CONFIG = {
         'Origin': 'https://doriangdp.github.io'
     }
 };
-
 // Configuration du chat
 const CHAT_CONFIG = {
     // Durée maximale d'une conversation (en millisecondes)
