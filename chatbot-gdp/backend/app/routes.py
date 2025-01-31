@@ -1,5 +1,16 @@
-from flask import current_app, request, jsonify
 from . import app  # Import de l'instance app
+from flask import Blueprint, current_app, request, jsonify
+
+api_bp = Blueprint('api', __name__)
+
+@api_bp.route('/chat', methods=['POST'])
+def chat():
+    try:
+        data = request.get_json()
+        # Your chat logic here
+        return jsonify({"status": "success"})
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
 
 @app.route('/api/chat', methods=['POST'])
 def chat():
