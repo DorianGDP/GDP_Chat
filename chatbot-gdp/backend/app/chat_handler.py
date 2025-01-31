@@ -12,7 +12,7 @@ from .untils import DataValidator
 
 class WealthChatbot:
     def __init__(self, openai_client):
-        self.client = openai_client
+        self.client = client
         conversation_id = str(uuid.uuid4())
         self.lead = Lead(conversation_id=conversation_id)
         self.conversation_history = []
