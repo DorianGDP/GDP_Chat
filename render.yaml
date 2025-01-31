@@ -1,0 +1,6 @@
+buildpacks:
+  - heroku/python
+  - apt
+packages:
+  - python3-dev
+  - build-essential
