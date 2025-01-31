@@ -1,28 +1,18 @@
-# Python virtual environment
-venv/
+# Python
 __pycache__/
-*.pyc
-
-# Environment variables
+*.py[cod]
+*$py.class
+venv/
+env/
 .env
 
+# Build
+_site/
+.DS_Store
+
 # Database
-instance/
 *.db
 
-# IDE settings
+# IDE
 .vscode/
 .idea/
-
-# System files
-.DS_Store
-Thumbs.db
-
-# Logs
-*.log
-
-# Temporary files
-*.tmp
-
-# Local development settings
-local_settings.py
