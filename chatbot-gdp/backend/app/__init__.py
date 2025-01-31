@@ -48,6 +48,9 @@ def create_app():
     # Register routes
     with app.app_context():
         from . import routes
+
+    from app.routes import api_bp
+    app.register_blueprint(api_bp, url_prefix='/api')
     
     return app
 
