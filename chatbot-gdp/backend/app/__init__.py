@@ -1,4 +1,4 @@
-import os
+
 from flask import Flask
 from flask_cors import CORS
 from openai import OpenAI
@@ -12,9 +12,9 @@ def create_app():
     CORS(app, resources={
         r"/api/*": {
             "origins": [
-                "http://localhost:5000",  # Development
-                "http://127.0.0.1:5000",  # Development
-                "https://doriangdp.github.io"  # Production
+                "http://localhost:5000",
+                "http://127.0.0.1:5000",
+                "https://doriangdp.github.io"
             ],
             "supports_credentials": True,
             "methods": ["GET", "POST", "OPTIONS"],
@@ -22,21 +22,18 @@ def create_app():
         }
     })
 
-    # Ensure instance folder exists
-    os.makedirs(os.path.join(config.BASE_DIR, 'instance'), exist_ok=True)
-    
-    # Ensure embeddings_db folder exists
-    os.makedirs(config.EMBEDDINGS_DIR, exist_ok=True)
-    
-    # Initialize OpenAI client
-    openai_client = OpenAI(api_key=config.OPENAI_API_KEY)
+    # Initialize OpenAI client - Modified initialization
+    openai_client = OpenAI(
+        api_key=config.OPENAI_API_KEY,
+        # Remove the proxies parameter if it exists
+    )
     
     # Initialize database
     from .models import DatabaseHandler
     db = DatabaseHandler()
     db.create_tables()
     
-    # Initialize chatbot
+    # Initialize chatbot with the client
     from .chat_handler import WealthChatbot
     chatbot = WealthChatbot(openai_client)
     
@@ -48,11 +45,5 @@ def create_app():
     # Register routes
     with app.app_context():
         from . import routes
-
-    from app.routes import api_bp
-    app.register_blueprint(api_bp, url_prefix='/api')
     
     return app
-
-# Create app instance
-app = create_app()
